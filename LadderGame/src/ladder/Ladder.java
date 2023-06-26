@@ -92,6 +92,15 @@ public class Ladder {
 					ladder[0][i] = " ";
 				}
 			}
+		} else {
+			System.out.println("보기중에 없어 플레이어는 숫자로 표기됩니다.");
+			for (int i = 0; i < ladder[0].length; i++) {
+				if (i % 2 == 0) {
+					ladder[0][i] = String.valueOf(((i + 1) / 2) + 1);
+				} else {
+					ladder[0][i] = " ";
+				}
+			}
 		}
 	}
 	
