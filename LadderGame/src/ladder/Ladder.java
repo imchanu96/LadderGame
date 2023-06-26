@@ -8,7 +8,7 @@ public class Ladder {
 	String ladderJoint2 = "┤"; // 사다리 이음새 2
 	int randomNum = 0;
 	int ladderPositionArr[];
-	String[] NumberOfUsersArr; // 사용자 이름값
+	String[] numberOfUsersArr; // 사용자 이름값
 
 	Scanner scan = new Scanner(System.in);
 
@@ -71,9 +71,9 @@ public class Ladder {
 			
 			ladderUsers(ladder[0].length / 2); // 사용자의 이름을 저장하는 메서드
 			
-			for (int i = 0; i < NumberOfUsersArr.length * 2; i++) {
+			for (int i = 0; i < numberOfUserArr.length * 2; i++) {
 				if (i % 2 == 0) {
-					ladder[0][i] = NumberOfUsersArr[i / 2];
+					ladder[0][i] = numberOfUserArr[i / 2];
 				}else if (i == 5) {
 					ladder[0][i] = "  ";
 				}else {
@@ -105,15 +105,15 @@ public class Ladder {
 	}
 	
 	private void ladderUsers(int numberOfUsers) { // 사다리 첫번째 라인에 이름 넣기
-		NumberOfUsersArr = new String[numberOfUsers];
+		numberOfUserArr = new String[numberOfUsers];
 
 		System.out.println("-----------------------------------------");
 		System.out.println("|사다리에 표시할 경우 사다리가 틀어 질 수도 있습니다,	|");
 		System.out.println("|표현을 원하시면 3글자 미만으로 입력 부탁드립니다.	|");
 		System.out.println("-----------------------------------------");
-		for (int i = 0; i < NumberOfUsersArr.length; i++) {
+		for (int i = 0; i < numberOfUserArr.length; i++) {
 			System.out.println((i + 1) + "번째 사람을 입력해주세요.");
-			NumberOfUsersArr[i] = scan.nextLine();
+			numberOfUserArr[i] = scan.nextLine();
 		}
 
 	}
