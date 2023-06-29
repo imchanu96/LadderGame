@@ -16,7 +16,7 @@ public class LadderGameTest {
 		Scanner scan = new Scanner(System.in);
 
 		Message message = new Message();
-		message.startMessage(); 	// 게임 시작 메세지
+		message.startMessage();	// 게임 시작 메세지
 		
 		try {
 			numberOfUsers = Integer.parseInt(scan.nextLine());
@@ -27,9 +27,9 @@ public class LadderGameTest {
 				numberOfUsers = 2;
 				message.lineMessage();
 			}
-		} catch (Exception e) {
-			numberOfUsers = 2;				// 오류일시일시  플레이어 2명으로 고정
-			message.lineMessage();
+		} catch (Exception e) { // 오류일시일시  플레이어 2명으로 고정
+			numberOfUsers = 2;
+			message.lineMessage(); 
 			System.out.println("숫자가 아닌 입력값으로 2로 고정합니다.");
 			message.lineMessage();
 		}
@@ -51,7 +51,7 @@ public class LadderGameTest {
 		}
 		
 		
-		ladder.showLadder();
+		ladder.showLadder(); // 완성된 사다리 출력
 
 		scan.close();
 	}
