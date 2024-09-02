@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        #titleBox{
+            width: 800px;
+            height: 400px;
+            background-color: skyblue;
+            margin: 0 auto;
+            margin-top: 150px;
+
+        }
+        #gameTitle{
+            text-decoration: underline;
+            font-size: 45px;
+            width: 800px;
+            height: 80px;
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 80px;
+            display: inline-block;
+        }
+
+        #headCountSelect{
+            margin: 0 auto;
+            width: 500px;
+            height: 80px;
+        }
+
+        #headCountSelect div{
+            float: left;
+            text-align: center;
+            margin-left: 85px;
+        }
+
+        #headCountDown, #headCountUp{
+            width: 55px;
+            height: 55px;
+            background-color: gray;
+            display: inline-block;
+            border-radius: 100%;
+        }
+        #headCountDown div, #headCountUp div{
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 35px;
+            font-size: 50px;
+            margin: 3px;
+        }
+        #headCount input{
+            background-color: transparent;
+            width: 50px;
+            height: 50px;
+            font-size: 60px;
+            text-align: center;
+        }
+
+        #gameStartSection{
+            width: 800px;
+            height: 50px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #gameStart{
+          font-size: 30px;
+          border: none;
+          background-color: transparent;
+        }
+    </style>
+    <script>
+        
+       
+    </script>
+    <title>사다리 게임</title>
+</head>
+<body>
+   <div id="titleBox">
+        <div id="gameTitle">
+            ㅒ 사다리 게임 ㅒ
+        </div>
+        <div id="headCountSelect">
+            <div id="headCountDown">
+                <div>
+                    <span>-</span>
+                </div>
+            </div>
+            <div id="headCount">
+                <input type="text" value="2">
+            </div>
+            <div id="headCountUp">
+                <div>
+                    +
+                </div>
+            </div>
+        </div>
+        <div id="gameStartSection">
+            <input id="gameStart" type="button" value="시작">
+        </div>
+   </div>
+</body>
+</html>
