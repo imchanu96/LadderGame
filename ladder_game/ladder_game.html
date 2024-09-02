@@ -31,7 +31,7 @@
         #headCountSelect div{
             float: left;
             text-align: center;
-            margin-left: 85px;
+            margin-left: 80px;
         }
 
         #headCountDown, #headCountUp{
@@ -40,6 +40,7 @@
             background-color: gray;
             display: inline-block;
             border-radius: 100%;
+            background-color: rgba(93, 97, 99, 0.5);
         }
         #headCountDown div, #headCountUp div{
             width: 50px;
@@ -48,10 +49,14 @@
             line-height: 35px;
             font-size: 50px;
             margin: 3px;
+            
+        }
+        #headCountDown div:hover, #headCountUp div:hover{
+            color: red;
         }
         #headCount input{
             background-color: transparent;
-            width: 50px;
+            width: 70px;
             height: 50px;
             font-size: 60px;
             text-align: center;
@@ -59,7 +64,7 @@
 
         #gameStartSection{
             width: 800px;
-            height: 50px;
+            height: 100px;
             margin: 0 auto;
             text-align: center;
         }
@@ -67,12 +72,35 @@
         #gameStart{
           font-size: 30px;
           border: none;
+          margin-top: 20px;
           background-color: transparent;
+        }
+        #gameStart:hover{
+          font-size: 40px;
+          color: red;
+          transition: all 0.3s;
+          margin-bottom : 10px;
         }
     </style>
     <script>
+        function headCountDownFnc() {
+            var num = document.getElementById("headCountNum");
+            num.value = parseInt(num.value) - 1;
+            if(num.value < 2){
+                alert("인원수는 최소 2명입니다.");
+                num.value = 2;
+            }
+        }
+        function headCountUpFnc() {
+            var num = document.getElementById("headCountNum");
+            num.value = parseInt(num.value) + 1;
+            if(num.value > 10){
+                alert("인원수는 최대 10명입니다.");
+                num.value = 10;
+            }
+        }
+
         
-       
     </script>
     <title>사다리 게임</title>
 </head>
@@ -83,15 +111,15 @@
         </div>
         <div id="headCountSelect">
             <div id="headCountDown">
-                <div>
-                    <span>-</span>
+                <div onclick="headCountDownFnc()">
+                    -
                 </div>
             </div>
             <div id="headCount">
-                <input type="text" value="2">
+                <input id="headCountNum" type="text" value="2" readonly="readonly">
             </div>
             <div id="headCountUp">
-                <div>
+                <div onclick="headCountUpFnc()">
                     +
                 </div>
             </div>
