@@ -100,6 +100,36 @@
             }
         }
 
+        function gameStartFnc(){ // 게임 시작
+            var titleBox = document.getElementById("titleBox");
+            var headCount = parseInt(document.getElementById("headCountNum").value);
+            while ( titleBox.hasChildNodes() ) // 화면 지우기
+            {
+                titleBox.removeChild(titleBox.firstChild);       
+            }
+
+            var playerArr = new Array(10);
+            for (let i = 0; i < playerArr.length; i++) {
+                playerArr[i] = new Array(headCount);
+                
+            }
+
+           
+            
+            for (let i = 0; i < playerArr.length; i++) { // 사다리 구성
+                for (let j = 0; j < playerArr[0].length; j++) {
+                    playerArr[i][j] = "H";
+                }
+                
+            }
+
+            for (let i = 0; i < playerArr.length; i++) { // html화면에 구현
+                for (let j = 0; j < playerArr[0].length; j++) {
+                    titleBox.innerHTML = titleBox.innerHTML + playerArr[i][j] + '&ensp;';
+                }
+                titleBox.innerHTML = titleBox.innerHTML + '<br>';
+            }
+        }
         
     </script>
     <title>사다리 게임</title>
@@ -125,7 +155,7 @@
             </div>
         </div>
         <div id="gameStartSection">
-            <input id="gameStart" type="button" value="시작">
+            <input id="gameStart" type="button" value="시작" onclick="gameStartFnc()">
         </div>
    </div>
 </body>
