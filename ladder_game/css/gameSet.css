@@ -1,0 +1,78 @@
+#titleBox{
+    width: 800px;
+    height: 400px;
+    background-color: skyblue;
+    margin: 0 auto;
+    margin-top: 150px;
+
+}
+#gameTitle{
+    text-decoration: underline;
+    font-size: 45px;
+    width: 800px;
+    height: 80px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 80px;
+    display: inline-block;
+}
+
+#headCountSelect{
+    margin: 0 auto;
+    width: 500px;
+    height: 80px;
+}
+
+#headCountSelect div{
+    float: left;
+    text-align: center;
+    margin-left: 80px;
+}
+
+#headCountDown, #headCountUp{
+    width: 55px;
+    height: 55px;
+    background-color: gray;
+    display: inline-block;
+    border-radius: 100%;
+    background-color: rgba(93, 97, 99, 0.5);
+}
+#headCountDown div, #headCountUp div{
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 35px;
+    font-size: 50px;
+    margin: 3px;
+    
+}
+#headCountDown div:hover, #headCountUp div:hover{
+    color: red;
+}
+#headCount input{
+    background-color: transparent;
+    width: 70px;
+    height: 50px;
+    font-size: 60px;
+    text-align: center;
+}
+
+#gameStartSection{
+    width: 800px;
+    height: 100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#gameStart{
+  font-size: 30px;
+  border: none;
+  margin-top: 20px;
+  background-color: transparent;
+}
+#gameStart:hover{
+  font-size: 40px;
+  color: red;
+  transition: all 0.3s;
+  margin-bottom : 10px;
+}

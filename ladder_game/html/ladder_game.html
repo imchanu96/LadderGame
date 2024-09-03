@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>사다리 게임</title>
+    
+    <link href="../css/gameSet.css" rel="stylesheet">     
+    <script src="../javascript/gameSet.js"></script>
+</head>
+<body>
+   <div id="titleBox">
+        <div id="gameTitle">
+            ㅒ 사다리 게임 ㅒ
+        </div>
+        <div id="headCountSelect">
+            <div id="headCountDown">
+                <div onclick="headCountDownFnc()">
+                    -
+                </div>
+            </div>
+            <div id="headCount">
+                <input id="headCountNum" type="text" value="2" readonly="readonly">
+            </div>
+            <div id="headCountUp">
+                <div onclick="headCountUpFnc()">
+                    +
+                </div>
+            </div>
+        </div>
+        <div id="gameStartSection">
+            <input id="gameStart" type="button" value="시작" onclick="gameStartFnc()">
+        </div>
+   </div>
+</body>
+</html>
