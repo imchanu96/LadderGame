@@ -1,6 +1,6 @@
 #titleBox{
-    width: 800px;
-    height: 400px;
+    width: 1000px;
+    height: 600px;
     background-color: skyblue;
     margin: 0 auto;
     margin-top: 150px;
@@ -9,11 +9,11 @@
 #gameTitle{
     text-decoration: underline;
     font-size: 45px;
-    width: 800px;
-    height: 80px;
+    width: 1000px;
+    height: 200px;
     text-align: center;
     margin: 0 auto;
-    margin-top: 80px;
+    margin-top: 120px;
     display: inline-block;
 }
 
@@ -75,4 +75,28 @@
   color: red;
   transition: all 0.3s;
   margin-bottom : 10px;
+}
+
+#playerNameArea{
+    width: 1000px;
+    height: 200px;
+    text-align: center;
+}
+
+.playerName{
+    width : 70%;
+    height: 70px;
+    margin: 0 auto;
+    font-size: 30px;
+    display: inline-block;
+    background-color: transparent;
+    text-align: center;
+    border: none;
+}
+
+#ladderArea{
+    width: 1000px;
+    height: 400px;
+    
+    text-align: center;
 }
