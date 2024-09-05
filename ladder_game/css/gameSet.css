@@ -79,13 +79,13 @@
 
 #playerNameArea{
     width: 1000px;
-    height: 200px;
+    height: 120px;
     text-align: center;
 }
 
 .playerName{
     width : 70%;
-    height: 70px;
+    height: 50px;
     margin: 0 auto;
     font-size: 30px;
     display: inline-block;
@@ -96,7 +96,35 @@
 
 #ladderArea{
     width: 1000px;
-    height: 400px;
+    height: 350px;
     
     text-align: center;
+}
+
+#resultArea{
+    width: 1000px;
+    height: 60px;
+    text-align: center;
+}
+
+.result{
+    width : 70%;
+    height: 50px;
+    margin: 0 auto;
+    font-size: 30px;
+    display: inline-block;
+    background-color: transparent;
+    text-align: center;
+    border: none;
+}
+#gameStartBtnArea{
+    width: 1000px;
+    height : 50px;
+    text-align: center;
+}
+#gameStartBtn{
+    background-color: transparent;
+    border : none;
+    color : red;
+    font-size: 30px;
 }
