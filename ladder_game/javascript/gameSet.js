@@ -22,10 +22,8 @@ function playerNameAndResultSelectFnc(){
     var titleBox = document.getElementById("titleBox");
     var headCount = parseInt(document.getElementById("headCountNum").value);
     var ladderSize = headCount * 2 - 1;
-    while ( titleBox.hasChildNodes() ) // 화면 지우기
-    {
-        titleBox.removeChild(titleBox.firstChild);       
-    }
+    
+    cleanFnc(titleBox);
 
     var playerNameArea = document.createElement("table"); // 플레이어 이름 표현 구역
     playerNameArea.id = "playerNameArea";
@@ -125,41 +123,42 @@ function playerNameAndResultSelectFnc(){
             
         }
 
-        var titleBox = document.getElementById("titleBox");
-        var ladderSize = headCount * 2 - 1;
-        while ( titleBox.hasChildNodes() ) // 화면 지우기
-        {
-            titleBox.removeChild(titleBox.firstChild);       
+        var playerNameTag = document.getElementsByClassName("playerName");
+        var resultTag = document.getElementsByClassName("result");
+
+        
+        var playerNameList = new Array();
+        var resultList = new Array();
+        
+        for (let i = 0; i < playerNameTag.length; i++) {
+            playerNameList.push(playerNameTag[i].value);
+            resultList.push(resultTag[i].value);
+            
         }
+        
+        
+
+        var resultInfo = {  "headCount" : headCount,
+                            "playerArr" : playerArr,
+                            "playerNameList" : playerNameList,
+                            "resultList" : resultList
+        }
+
+        cleanFnc(titleBox);
+        ladderFnc(resultInfo);
+    });
     
-    });
-    ////////////////////////////////////JSON에 playerNameList, resultList 넣어야함
-    var playerNameTag = document.getElementsByClassName("playerName");
-    var resultTag = new Array(document.getElementsByClassName("result"));
-    
-    console.log(playerNameTag);
-
-    var playerNameList = new Array();
-    var resultList = new Array();
-
-    playerNameTag.forEach(element => {
-        playerNameList.push(element.value);
-    });
-    resultList.forEach(element => {
-        resultList.push(element.value);
-    });
-
-    var resultInfo = {  "headCount" : headCount,
-                        "playerArr" : playerArr,
-                        "playerNameList" : playerNameList,
-                        "resultList" : resultList
-    }
-
-    //alert(JSON.stringify(resultInfo));
-
-    //gameStartBtn.addEventListener("click", ()=> {ladderFnc(resultInfo)});
-
+   
 }
+
+function cleanFnc(tag){
+    while ( tag.hasChildNodes() ) // 화면 지우기
+    {
+        tag.removeChild(tag.firstChild);       
+    }
+    
+}
+
 
 
 
