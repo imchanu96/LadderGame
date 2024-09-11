@@ -17,6 +17,16 @@
     display: inline-block;
 }
 
+#warningMessage{
+    width: inherit;
+    height: 50px;
+    position: absolute;
+    top:50px;
+    text-align: center;
+    color : red;
+    font-size: 50px;
+}
+
 #headCountSelect{
     margin: 0 auto;
     width: 500px;

@@ -1,0 +1,44 @@
+#resultTable{
+    height: inherit;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#resultTable tr td{
+    font-size: 30px;
+    width: inherit;
+    height: 45px;
+}
+
+.verticalStick{
+    width: 5px;
+    height: inherit;
+    background-color: black;
+    margin: 0 auto;
+}
+
+.horizontalStick{
+    width: inherit;
+    height: 5px;
+    background-color: black;
+    margin: 0 auto;
+}
+
+/* .horizontalStick::before{
+    width: inherit;
+    height: 5px;
+    content: "";
+    background-color: black;
+    position: absolute;
+    left: 50%;
+    margin: 0 auto;
+}
+.horizontalStick::after{
+    width: inherit;
+    height: 5px;
+    content: "";
+    background-color: black;
+    position: absolute;
+    right: 50%;
+    margin: 0 auto;
+} */

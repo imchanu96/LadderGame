@@ -22,8 +22,13 @@ function playerNameAndResultSelectFnc(){
     var titleBox = document.getElementById("titleBox");
     var headCount = parseInt(document.getElementById("headCountNum").value);
     var ladderSize = headCount * 2 - 1;
-    
+
     cleanFnc(titleBox);
+
+    var warningMessage = document.createElement("div");
+    warningMessage.id = "warningMessage";
+
+    titleBox.appendChild(warningMessage);
 
     var playerNameArea = document.createElement("table"); // 플레이어 이름 표현 구역
     playerNameArea.id = "playerNameArea";
@@ -34,30 +39,30 @@ function playerNameAndResultSelectFnc(){
     for (let i = 0; i < ladderSize; i++) {
         if (i % 2 == 0) {
             var playerNameTd = document.createElement("td");
-        var playerName = document.createElement("input");
-        playerName.className = "playerName";
-        playerName.type = "text";
-        playerName.placeholder = "이름";
-        playerNameTd.appendChild(playerName);
-        playerNameTr.appendChild(playerNameTd);
+            var playerName = document.createElement("input");
+            playerName.className = "playerName";
+            playerName.type = "text";
+            playerName.placeholder = "이름";
+            playerNameTd.appendChild(playerName);
+            playerNameTr.appendChild(playerNameTd);
         }
         
     }
     titleBox.appendChild(playerNameArea);
     
-    var playerArr = new Array(10);
+    var ladderArr = new Array(10);
 
-    for (let i = 0; i < playerArr.length; i++) {
-        playerArr[i] = new Array(ladderSize).fill("");
+    for (let i = 0; i < ladderArr.length; i++) {
+        ladderArr[i] = new Array(ladderSize).fill("");
         
     }
     
-    for (let i = 0; i < playerArr.length; i++) { // 사다리 구성
-        for (let j = 0; j < playerArr[0].length; j++) {
+    for (let i = 0; i < ladderArr.length; i++) { // 사다리 구성
+        for (let j = 0; j < ladderArr[0].length; j++) {
             if(j % 2 == 0){ //플레이어별 라인 (ㅣ)
-                playerArr[i][j] = ladderLine;
+                ladderArr[i][j] = ladderLine;
             }else{
-                playerArr[i][j] = "   .  ";
+                ladderArr[i][j] = "";
             }
         }
         
@@ -67,13 +72,13 @@ function playerNameAndResultSelectFnc(){
     ladderArea.id = "ladderArea";
     
     
-    for (let i = 0; i < playerArr.length; i++) { // html화면에 구현
+    for (let i = 0; i < ladderArr.length; i++) { // html화면에 구현
         var ladderTr = document.createElement("tr");
-        for (let j = 0; j < playerArr[0].length; j++) {
+        for (let j = 0; j < ladderArr[0].length; j++) {
 
             var ladderTd = document.createElement("td");
             ladderTr.appendChild(ladderTd);
-            ladderTd.innerHTML = ladderTd.innerHTML + playerArr[i][j];
+            ladderTd.innerHTML = ladderTd.innerHTML + ladderArr[i][j];
             
         }
         ladderArea.appendChild(ladderTr);
@@ -116,13 +121,12 @@ function playerNameAndResultSelectFnc(){
             for (let j = 0; j < 4; j++) { // 플레이어 수 라인별 // 사다리 이음새 최대 4개 설정
                 if(i % 2 != 0){
                     randNum = Math.floor(Math.random()* 10);
-                    playerArr[randNum][i] = ladderJoinner;
+                    ladderArr[randNum][i] = ladderJoinner;
                 
                 }
             }
             
         }
-
         var playerNameTag = document.getElementsByClassName("playerName");
         var resultTag = document.getElementsByClassName("result");
 
@@ -131,15 +135,24 @@ function playerNameAndResultSelectFnc(){
         var resultList = new Array();
         
         for (let i = 0; i < playerNameTag.length; i++) {
-            playerNameList.push(playerNameTag[i].value);
-            resultList.push(resultTag[i].value);
+            if(checkValueFnc(playerNameTag[i].value)){ 
+                playerNameList.push(i+1);
+            }else{
+                playerNameList.push(playerNameTag[i].value);
+            }
+            
+            if(checkValueFnc(resultTag[i].value)){
+                warningMessage.innerHTML = "결과 정하기를 모두 입력해주세요";
+                gameStartBtn.preventDefault();
+            }else{
+                resultList.push(resultTag[i].value);
+            }
             
         }
         
-        
 
         var resultInfo = {  "headCount" : headCount,
-                            "playerArr" : playerArr,
+                            "ladderArr" : ladderArr,
                             "playerNameList" : playerNameList,
                             "resultList" : resultList
         }
@@ -161,4 +174,11 @@ function cleanFnc(tag){
 
 
 
+function checkValueFnc(value){
+    if(value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){
 
+        return true;
+    }else{
+        return false;
+    }
+}
