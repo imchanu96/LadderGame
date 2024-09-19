@@ -2,6 +2,7 @@
     height: inherit;
     text-align: center;
     margin: 0 auto;
+    table-layout: fixed;
 }
 
 #resultTable tr td{
@@ -17,28 +18,43 @@
     margin: 0 auto;
 }
 
-.horizontalStick{
-    width: inherit;
-    height: 5px;
+
+.joinStick1{
+    width: 5px;
+    height: inherit;
     background-color: black;
     margin: 0 auto;
+    position: relative;
 }
 
-/* .horizontalStick::before{
-    width: inherit;
-    height: 5px;
-    content: "";
+.joinStick2{
+    width: 5px;
+    height: inherit;
     background-color: black;
-    position: absolute;
-    left: 50%;
     margin: 0 auto;
+    position: relative;
 }
-.horizontalStick::after{
-    width: inherit;
+
+
+
+.joinStick1::before{
+    width: 85px;
     height: 5px;
     content: "";
     background-color: black;
     position: absolute;
-    right: 50%;
-    margin: 0 auto;
-} */
+    margin: 45px auto;
+    left:0px;
+}
+
+.joinStick2::before{
+    width: 55px;
+    height: 5px;
+    content: "";
+    background-color: black;
+    position: absolute;
+    left: -50px;
+    margin: 45px auto;
+}
+
+

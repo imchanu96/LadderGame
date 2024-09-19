@@ -1,5 +1,5 @@
 var ladderLine = "ㅣ";
-var ladderJoinner = "ㅡ";
+var ladderJoiner1 = "ㅏ", ladderJoiner2 = "ㅓ";
 
 function headCountDownFnc() {
     var num = document.getElementById("headCountNum");
@@ -116,17 +116,32 @@ function playerNameAndResultSelectFnc(){
     titleBox.appendChild(gameStartBtnArea);
     gameStartBtn.addEventListener("click", function gameStartFnc(){ // 게임 시작
         var randNum = 0;
-    
-        for (let i = 0; i < ladderSize; i++) {  
-            for (let j = 0; j < 4; j++) { // 플레이어 수 라인별 // 사다리 이음새 최대 4개 설정
-                if(i % 2 != 0){
-                    randNum = Math.floor(Math.random()* 10);
-                    ladderArr[randNum][i] = ladderJoinner;
+        randNum = Math.floor(Math.random()* 3) + 3;
+        var suffleNum = 0;
+        for (let i = 0; i < randNum; i++) {  
+            for (let j = 0; j < ladderArr[0].length - 1; j++) { // 라인별 사다리 이음새 생성
+
+                suffleNum = Math.floor(Math.random() * (ladderArr.length));
+
+                if(j % 2 == 0 &&(suffleNum != 0 && suffleNum != ladderArr.length-1)){
+                    ladderArr[suffleNum][j] = ladderJoiner1;
                 
                 }
             }
             
         }
+
+        for (let i = 0; i < ladderArr.length; i++) { // 사다리 이음새에 맞게 재구성
+            for (let j = 0; j < ladderArr[0].length; j++) {
+                if (ladderArr[i][j] == ladderJoiner1) {
+                    ladderArr[i][j + 1] = "ㅡ";
+					ladderArr[i][j + 2] = ladderJoiner2;   
+                }
+                
+            }
+            
+        }
+
         var playerNameTag = document.getElementsByClassName("playerName");
         var resultTag = document.getElementsByClassName("result");
 
@@ -143,7 +158,7 @@ function playerNameAndResultSelectFnc(){
             
             if(checkValueFnc(resultTag[i].value)){
                 warningMessage.innerHTML = "결과 정하기를 모두 입력해주세요";
-                gameStartBtn.preventDefault();
+                // gameStartBtn.preventDefault();
             }else{
                 resultList.push(resultTag[i].value);
             }
