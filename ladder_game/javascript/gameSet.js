@@ -158,7 +158,7 @@ function playerNameAndResultSelectFnc(){
             
             if(checkValueFnc(resultTag[i].value)){
                 warningMessage.innerHTML = "결과 정하기를 모두 입력해주세요";
-                // gameStartBtn.preventDefault();
+                gameStartBtn.preventDefault();
             }else{
                 resultList.push(resultTag[i].value);
             }

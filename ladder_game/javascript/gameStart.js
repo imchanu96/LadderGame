@@ -7,7 +7,7 @@ function ladderFnc(resultInfo){
 
     //결과 확인용
 
-    console.log(ladderArr);
+    // console.log(ladderArr);
   
     ///////////////////////////////innerHTML로는 구현//////////////////////////////////
     var resultTable = document.createElement("table");
@@ -52,7 +52,7 @@ function ladderFnc(resultInfo){
     //테이블 크기 맞추기
     titleBox.appendChild(resultTable);
     
-    
+    console.log(displayList);
 
     var ladderSection = null;
     //테이블에 해당 배열에 사다리의 형태를 div로 만들기
@@ -83,30 +83,33 @@ function ladderFnc(resultInfo){
     }
     //////////////////////////결과창 띄우기/////////////////////////////
     var resultSection = document.createElement("div");
+    resultSection.id = "resultSection";
     titleBox.appendChild(resultSection);
-    var x = 0, y = 0;
-    for (let i = 0; i < ladderArr.length; i++) {
-        for (let j = 0; j < ladderArr[0].length; j++) {
-            if(ladderArr[x][y] == "ㅣ"){
-                resultSection.innerHTML = resultSection.innerHTML + ladderArr[x][y];
-                x += 1;
-                i += 1;
-            }else if(ladderArr[x][y] == "ㅏ"){
-                resultSection.innerHTML = resultSection.innerHTML + ladderArr[x][y];
-                x += 1;
-                i += 1;
+    var y = 0;
+    for (let i = 0; i < ladderArr[0].length; i = i + 2) {
+        y = i;
+        for (let j = 0; j < ladderArr.length; j++) {
+            if(ladderArr[j][y] == "ㅏ"){
                 y += 2;
-                j += 2;
-            }else if(ladderArr[x][y] == "ㅓ"){
-                resultSection.innerHTML = resultSection.innerHTML + ladderArr[x][y];
-                x += 1;
-                i += 1;
+            }else if(ladderArr[j][y] == "ㅓ"){
                 y -= 2;
-                j -= 2;
+            }
+            if(j == 9){
+                console.log(i + "번째 결과 : [" + j + "][" + y/2 + "] = " + displayList[11][y]);
+                var resultBtn = document.createElement("input");
+                resultBtn.type = "button";
+                resultBtn.className = "resultBtn";
+                resultBtn.value = displayList[0][i] + " = " + displayList[11][y];
+                resultSection.appendChild(resultBtn);
+                
+                resultBtn.addEventListener("click", function(){
+                    showResultFnc(i);
+                });
             }
         }
-        resultSection.innerHTML = resultSection.innerHTML + "<br>";
     }
+
+    
     //결과값 생성중 *-----------------------------------------------------------------------------
 
     // var resultMap = new Map();
@@ -116,4 +119,11 @@ function ladderFnc(resultInfo){
     //         resultMap.set(playerNameList[0], )
     //     }
     // }
+}
+
+
+function showResultFnc(startValue){
+    ////////////////////////색 바뀌는거 테스트 중////////////////////////////////////////
+    // document.getElementsByTagName("td")[10].children[0].style = "background-color : red";
+    alert(startValue);
 }
