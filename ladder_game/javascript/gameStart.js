@@ -1,14 +1,11 @@
+var colorArr = ["red", "orange", "yellow", "green", "blue", "navy", "pink", "brown", "white", "aquamarine"];
+
 function ladderFnc(resultInfo){
 
     var headCount = resultInfo.headCount;
     var ladderArr = resultInfo.ladderArr;
     var playerNameList = resultInfo.playerNameList;
     var resultList = resultInfo.resultList;
-
-    //결과 확인용
-
-    // console.log(ladderArr);
-  
     ///////////////////////////////innerHTML로는 구현//////////////////////////////////
     var resultTable = document.createElement("table");
     var displayList = new Array();
@@ -17,7 +14,6 @@ function ladderFnc(resultInfo){
     var tableSetWidth = headCount * 100 + "px;"; //테이블 총 크기
     var tdSetWidth = (headCount * 50 / (ladderArr.length + 2)) + "px;"; // 테이블의 각 td의 크기
     var tdFontSize = (30 - headCount) + "px;";
-    console.log(displayList.length);
     resultTable.setAttribute("style", "width:" + tableSetWidth);
 
     for (let i = 0; i < ladderArr.length + 2; i++) {
@@ -27,12 +23,12 @@ function ladderFnc(resultInfo){
         
         for (let j = 0; j < ladderArr[0].length; j++) {
             var resultTd = document.createElement("td");
-            resultTd.setAttribute("style", "width:" + tdSetWidth + "font-size:" + tdFontSize);
             if((i == 0) && (j % 2 == 0)){
+                resultTd.setAttribute("style", "width:" + tdSetWidth + "font-size:" + tdFontSize);
                 displayList[i][j] = playerNameList[0];
                 playerNameList = playerNameList.slice(1);
-
             }else if((i == ladderArr.length+1) && (j % 2 == 0)){
+                resultTd.setAttribute("style","font-size:" + tdFontSize);
                 displayList[i][j] = resultList[0];
                 resultList = resultList.slice(1);
 
@@ -47,16 +43,16 @@ function ladderFnc(resultInfo){
         
         resultTable.appendChild(resultTr);
     }
-
-    console.log(tableSetWidth + tdSetWidth);
-    //테이블 크기 맞추기
     titleBox.appendChild(resultTable);
     
-    console.log(displayList);
+    // console.log(displayList);
 
     var ladderSection = null;
+
+    var showResultList = new Array();
     //테이블에 해당 배열에 사다리의 형태를 div로 만들기
     for (let i = 0; i < displayList.length; i++) {
+        showResultList[i] = new Array();
         for (let j = 0; j < displayList[0].length; j++) {
             ladderSection = document.getElementById("resultTable").children[i].children[j];
             if(displayList[i][j] == "ㅣ"){ // ㅣ div 태그로 변환
@@ -78,13 +74,19 @@ function ladderFnc(resultInfo){
             }else{
                 ladderSection.innerHTML = displayList[i][j];
             }
+            showResultList[i][j] = stick;
+            if(i == 0){
+                ladderSection.style.color = colorArr[j/2];
+            }
         }
         
     }
+    // console.log(showResultList);
     //////////////////////////결과창 띄우기/////////////////////////////
     var resultSection = document.createElement("div");
     resultSection.id = "resultSection";
     titleBox.appendChild(resultSection);
+    titleBox.setAttribute("style", "width : 1200px;");
     var y = 0;
     for (let i = 0; i < ladderArr[0].length; i = i + 2) {
         y = i;
@@ -95,7 +97,7 @@ function ladderFnc(resultInfo){
                 y -= 2;
             }
             if(j == 9){
-                console.log(i + "번째 결과 : [" + j + "][" + y/2 + "] = " + displayList[11][y]);
+                //console.log(i + "번째 결과 : [" + j + "][" + y/2 + "] = " + displayList[11][y]);
                 var resultBtn = document.createElement("input");
                 resultBtn.type = "button";
                 resultBtn.className = "resultBtn";
@@ -103,27 +105,29 @@ function ladderFnc(resultInfo){
                 resultSection.appendChild(resultBtn);
                 
                 resultBtn.addEventListener("click", function(){
-                    showResultFnc(i);
+                    showResultFnc(i, showResultList);
                 });
             }
         }
     }
 
-    
-    //결과값 생성중 *-----------------------------------------------------------------------------
-
-    // var resultMap = new Map();
-
-    // for (let i = 0; i < ladderArr.length; i++) {
-    //     for(let j = 0; j < ladderArr[0].length; j++){
-    //         resultMap.set(playerNameList[0], )
-    //     }
-    // }
 }
 
-
-function showResultFnc(startValue){
+function showResultFnc(startValue, showResultList) {
     ////////////////////////색 바뀌는거 테스트 중////////////////////////////////////////
-    // document.getElementsByTagName("td")[10].children[0].style = "background-color : red";
-    alert(startValue);
+    var playerColor = startValue / 2;
+    
+
+    var delayTime = 0;  // 트랜지션 딜레이 시간
+    for (let i = 1; i < showResultList.length - 1; i++) {
+        delayTime = (i / 10) + "s";  // 트랜지션 딜레이 계산
+        showResultList[i][startValue].setAttribute("style", "background-color : " + colorArr[playerColor] + "; transition-delay : " + delayTime);
+        if (showResultList[i][startValue].className === "joinStick1") {
+            showResultList[i][startValue+1].setAttribute("style", "background-color : " + colorArr[playerColor] + "; transition-delay : " + delayTime);
+            startValue += 2;  // joinStick1일 경우 인덱스 증가
+        } else if (showResultList[i][startValue].className === "joinStick2") {
+            showResultList[i][startValue-1].setAttribute("style", "background-color : " + colorArr[playerColor] + "; transition-delay : " + delayTime);
+            startValue -= 2;  // joinStick2일 경우 인덱스 감소
+        }
+    }
 }

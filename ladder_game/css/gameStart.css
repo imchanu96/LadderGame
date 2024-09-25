@@ -7,9 +7,9 @@
 
 #resultTable tr td{
     font-size: 30px;
-    width: inherit;
     height: 45px;
 }
+
 
 .verticalStick{
     width: 5px;
@@ -18,6 +18,12 @@
     margin: 0 auto;
 }
 
+.horizontalStick{
+    width: inherit;
+    height: 5px;
+    background-color: black;
+    margin-top: 40px;
+}
 
 .joinStick1{
     width: 5px;
@@ -33,28 +39,6 @@
     background-color: black;
     margin: 0 auto;
     position: relative;
-}
-
-
-
-.joinStick1::before{
-    width: 85px;
-    height: 5px;
-    content: "";
-    background-color: black;
-    position: absolute;
-    margin: 45px auto;
-    left:0px;
-}
-
-.joinStick2::before{
-    width: 55px;
-    height: 5px;
-    content: "";
-    background-color: black;
-    position: absolute;
-    left: -50px;
-    margin: 45px auto;
 }
 
 #resultSection{
